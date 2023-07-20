@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            margin: 0;
+        }
+        canvas {
+            width: 100vw;
+            height: 100vh;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<canvas></canvas>
+<script>
+    var W, H, ctx, a = [], FPS = 60, R = 60, amount = 10, speed = 0.6;
+    window.onload = function () {
+        setTimeout(function () {
+            var c = document.querySelector('canvas');
+            c.width = W = window.innerWidth;
+            c.height = H = window.innerHeight;
+            R = Math.min(W, H) / 6;
+            ctx = c.getContext('2d');
+            ctx.fillStyle = 'rgba(51, 51, 51, 0.04)';
+            ctx.strokeStyle = 'gold';
+            for (var i = 0; i < amount; i++) {
+                a.push(i/amount * Math.PI * 2);
+            }
+            animate();
+        }, 200);
+    };
+    function animate() {
+        setTimeout(function () {
+            window.requestAnimationFrame(animate);
+        }, 1000 / FPS);
+        ctx.fillRect(0, 0, W, H);
+        var now = Date.now() / 10000 * speed;
+        for (var i = 0; i < amount; i++) {
+            var b = a[i] += Math.PI / FPS * speed * Math.sin(now);
+            b = Math.cos(b + now) * Math.sin(now / 2);
+            var r = R * b;
+            var x = Math.cos(a[i]) * (R + r);
+            var y = Math.sin(a[i]) * (R + r);
+            ctx.beginPath();
+            ctx.arc(W / 2 + x, H / 2 + y, Math.abs(r), 0, Math.PI * 2);
+            ctx.stroke();
+        }
+    }
+</script>
+</body>
+</html>

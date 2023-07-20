@@ -1,0 +1,135 @@
+import pygame
+from random import randint
+
+pygame.init()
+WIDTH, HEIGHT = 400, 600
+screen = pygame.display.set_mode((WIDTH,HEIGHT))
+pygame.display.set_caption
+running = True
+clock = pygame.time.Clock()
+
+GREY = (150,150,150)
+BLUE = (0, 0, 255)
+RED = (255,0,0)
+BLACK =(0,0,0)
+YELLOW = (255,255,255)
+
+TUBE_WIDTH = 50
+TUBE_VELOCITY = 2
+TUBEX_REBONR = 550
+TUBE_GAP = 170
+tube1_x = 400
+tube2_x = 600
+tube3_x = 800
+tube1_height = randint(100,400)
+tube2_height = randint(100,400)
+tube3_height = randint(100,400)
+BIRD_X = 50
+bird_y = 250
+BIRD_WIDTH = 50
+BIRD_HIGHT = 50
+bird_drop_velocity = 0
+GRAVITY = 0.5
+score = 0
+tube1_pass = False
+tube2_pass = False
+tube3_pass = False
+game_over = False
+
+font = pygame.font.SysFont('sans', 20)
+background_image = pygame.image.load("background.png")
+background_image = pygame.transform.scale(background_image, (400,600))
+bird_image = pygame.image.load("bird.png")
+bird_image = pygame.transform.scale(bird_image, (BIRD_WIDTH, BIRD_HIGHT))
+
+while running:
+    clock.tick(60)
+    screen.fill(GREY)
+    screen.blit(background_image, (0,0 ))
+
+    #Vẽ ống và vẽ ống đối diện
+    tube1_rect = pygame.draw.rect(screen, BLUE, (tube1_x, 0, TUBE_WIDTH, tube1_height)) # Vẽ ống
+    tube2_rect = pygame.draw.rect(screen, BLUE, (tube2_x, 0, TUBE_WIDTH, tube2_height)) # Vẽ ống
+    tube3_rect = pygame.draw.rect(screen, BLUE, (tube3_x, 0, TUBE_WIDTH, tube3_height)) # Vẽ ống
+
+    tube1_rec_ivt = pygame.draw.rect(screen, BLUE, (tube1_x, (tube1_height + TUBE_GAP), TUBE_WIDTH, (HEIGHT - tube1_height - TUBE_GAP))) # Vẽ ống đối diện 
+    tube2_rect_ivt = pygame.draw.rect(screen, BLUE, (tube2_x, (tube2_height + TUBE_GAP), TUBE_WIDTH, (HEIGHT - tube2_height - TUBE_GAP))) # Vẽ ống đối diện
+    tube3_rect_ivt = pygame.draw.rect(screen, BLUE, (tube3_x, (tube3_height + TUBE_GAP), TUBE_WIDTH,(HEIGHT - tube3_height - TUBE_GAP))) # Vẽ ống đối diện
+
+    #Ống đi sang trái
+    tube1_x = tube1_x - TUBE_VELOCITY # Ống đi sang trái
+    tube2_x = tube2_x - TUBE_VELOCITY # Ống đi sang trái
+    tube3_x = tube3_x - TUBE_VELOCITY # Ống đi sang trái
+
+    #Vẽ Chim
+    #bird_rect = pygame.draw.rect(screen, RED, (BIRD_X, bird_y, BIRD_WIDTH, BIRD_HIGHT)) #Vẽ chim
+    bird_rect = screen.blit(bird_image, (BIRD_X, bird_y)) #Vẽ chim
+
+
+    #pygame.draw.rect(screen, YELLOW, (0,570,400,30))
+
+    #Chim rơi
+    bird_y += bird_drop_velocity 
+    bird_drop_velocity += GRAVITY
+
+    #Tạo ống mới
+    if tube1_x < -50:
+        tube1_x = TUBEX_REBONR
+        tube1_height = randint(100,400) #Tạo ống mới
+        tube1_pass = False
+    if tube2_x < -50:
+        tube2_x = TUBEX_REBONR
+        tube2_height = randint(100,400)#Tạo ống mới
+        tube2_pass = False
+    if tube3_x < -50:
+        tube3_x = TUBEX_REBONR
+        tube3_height = randint(100,400)#Tạo ống mới
+        tube3_pass = False
+
+    #Hiện điểm lên màn hình
+    score_txt = font.render("Score: " + str(score), True, BLACK)
+    screen.blit(score_txt, (5,5))
+
+    #Tính điểm
+    if tube1_x + TUBE_WIDTH <= BIRD_X and tube1_pass == False:
+        score += 1
+        tube1_pass = True
+    if tube2_x + TUBE_WIDTH <= BIRD_X and tube2_pass == False:
+        score += 1
+        tube2_pass = True
+    if tube3_x + TUBE_WIDTH <= BIRD_X and tube3_pass == False:
+        score += 1
+        tube3_pass = True
+
+    #Chim chết
+    for tube in [tube1_rect, tube2_rect, tube3_rect, tube1_rec_ivt, tube2_rect_ivt, tube3_rect_ivt]:
+        if bird_rect.colliderect(tube) or bird_y > 600:
+            TUBE_VELOCITY = 0
+            bird_drop_velocity = 0
+            game_over_txt = font.render("Game over, Score: " + str(score), True, BLACK)
+            screen.blit(game_over_txt, (100, 250))
+            press_space_txt = font.render("Click Space to continue", True, BLACK)
+            screen.blit(press_space_txt, (85,270))
+            game_over = True
+
+    #Điều khiển nút bấm
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE:
+                bird_drop_velocity = 0
+                bird_drop_velocity -= 9
+                if(game_over == True):
+                    tube1_x = 400
+                    tube2_x = 600
+                    tube3_x = 800
+                    bird_y = 400
+                    TUBE_VELOCITY = 2.5
+                    score = 0
+                    game_over = False
+
+
+    pygame.display.flip()
+
+pygame.quit()
