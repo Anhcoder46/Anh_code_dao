@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Codegym</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        input[type=text], input[type=number] {
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+
+        label {
+            display: inline-block;
+            width: 150px;
+            text-align: right;
+            padding-right: 10px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        div {
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<h2>Xây dựng hệ thống quản lý học viên</h2>
+
+<div>
+    <label for="studentCode">Mã học viên:</label>
+    <input type="text" id="studentCode">
+</div>
+
+<div>
+    <label for="names">Tên:</label>
+    <input type="text" id="names">
+</div>
+
+<div>
+    <label for="classe"> Lớp:</label>
+    <input type="text" id="classe">
+</div>
+
+<div>
+    <label for="email">Email:</label>
+    <input type="text" id="email">
+</div>
+
+<div>
+    <label for="day">Ngày sinh:</label>
+    <input type="text" id="day">
+</div>
+
+<div>
+    <label for="moDun">Module:</label>
+    <input type="number" id="moDun">
+</div>
+
+<div>
+    <button id="btn-add" onclick="createNewStudent()">Thêm mới học viên</button>
+    <button id="btn-save" onclick="saveUpdate()">Lưu</button>
+    <button onclick="updateStudent()">Sửa thông tin học viên</button>
+    <button onclick="deleteStudent()">Xóa học viên</button>
+</div>
+
+<div id="studentList"></div>
+
+<script>
+    class Student {
+        constructor(studentCode, names, classe, email, day, moDun) {
+            this._studentCode = studentCode;
+            this._names = names;
+            this._classe = classe;
+            this._email = email;
+            this._day = day;
+            this._moDun = moDun;
+        }
+
+        get studentCode() {
+            return this._studentCode;
+        }
+
+        set studentCode(value) {
+            this._studentCode = value;
+        }
+
+        get names() {
+            return this._names;
+        }
+
+        set names(value) {
+            this._names = value;
+        }
+
+        get classe() {
+            return this._classe;
+        }
+
+        set classe(value) {
+            this._classe = value;
+        }
+
+        get email() {
+            return this._email;
+        }
+
+        set email(value) {
+            this._email = value;
+        }
+
+        get day() {
+            return this._day;
+        }
+
+        set day(value) {
+            this._day = value;
+        }
+
+        get moDun() {
+            return this._moDun;
+        }
+
+        set moDun(value) {
+            this._moDun = value;
+        }
+    }
+
+    let studentArray = [];
+    let student1 = new Student("HV-0001", "Trần Đức Anh", "A0523i1", "tranduanh045@gmail.com", "16/05/2004", "1");
+    let student2 = new Student("HV-0002", "Trần Thị Nở", "A0523i1", "notran026@gmail.com", "18/02/2001", "1");
+    let student3 = new Student("HV-0003", "Nguyễn Chí Phèo", "A0523i1","pheonguyen005@gmail.com", "10/05/2003", "1");
+    let student4 = new Student("HV-0004", "Giàng A Lử", "A0523i1","lugiang005@gmail.com", "27/11/2002", "1");
+    studentArray.push(student1, student2, student3, student4);
+
+    function displayStudent() {
+        let studentList = document.getElementById("studentList");
+        studentList.innerHTML = "";
+
+        let table = document.createElement("table");
+        let tr = document.createElement("tr");
+
+        let th1 = document.createElement("th");
+        th1.innerHTML = "Mã học viên";
+        tr.appendChild(th1);
+
+        let th2 = document.createElement("th");
+        th2.innerHTML = "Tên";
+        tr.appendChild(th2);
+
+        let th3 = document.createElement("th");
+        th3.innerHTML = "Lớp";
+        tr.appendChild(th3);
+
+        let th4 = document.createElement("th");
+        th4.innerHTML = "Email";
+        tr.appendChild(th4);
+
+        let th5 = document.createElement("th");
+        th5.innerHTML = "Ngày sinh";
+        tr.appendChild(th5);
+
+        let th6 = document.createElement("th");
+        th6.innerHTML = "Module";
+        tr.appendChild(th6);
+
+        table.appendChild(tr);
+
+        for (let i = 0; i < studentArray.length; i++) {
+            let student = studentArray[i];
+
+            let tr = document.createElement("tr");
+            tr.setAttribute("data-index", i);
+
+            let td1 = document.createElement("td");
+            td1.innerHTML = student.studentCode;
+            tr.appendChild(td1);
+
+            let td2 = document.createElement("td");
+            td2.innerHTML = student.names;
+            tr.appendChild(td2);
+
+            let td3 = document.createElement("td");
+            td3.innerHTML = student.classe;
+            tr.appendChild(td3);
+
+            let td4 = document.createElement("td");
+            td4.innerHTML = student.email;
+            tr.appendChild(td4);
+
+            let td5 = document.createElement("td");
+            td5.innerHTML = student.day;
+            tr.appendChild(td5);
+
+            let td6 = document.createElement("td");
+            td6.innerHTML = student.moDun;
+            tr.appendChild(td6);
+
+            table.appendChild(tr);
+        }
+
+        studentList.appendChild(table);
+    }
+
+    function createNewStudent() {
+        let studentCode = document.getElementById("studentCode").value;
+        let names = document.getElementById("names").value;
+        let classe = document.getElementById("classe").value;
+        let email = document.getElementById("email").value;
+        let day = document.getElementById("day").value;
+        let moDun = document.getElementById("moDun").value;
+
+        let student = new Student(studentCode, names, classe, email, day, moDun);
+        studentArray.push(student);
+        displayStudent();
+
+        document.getElementById("studentCode").value = "";
+        document.getElementById("names").value = "";
+        document.getElementById("classe").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("day").value = "";
+        document.getElementById("moDun").value = "";
+    }
+
+    function saveUpdate() {
+        let studentCode = document.getElementById("studentCode").value;
+        let names = document.getElementById("names").value;
+        let classe = document.getElementById("classe").value;
+        let email = document.getElementById("email").value;
+        let day = document.getElementById("day").value;
+        let moDun = document.getElementById("moDun").value;
+
+        let index = document.querySelector("tr.selected").getAttribute("data-index");
+        let student = studentArray[index];
+
+        student.studentCode = studentCode;
+        student.names = names;
+        student.classe = classe;
+        student.email = email;
+        student.day = day;
+        student.moDun = moDun;
+
+        displayStudent();
+
+        document.getElementById("studentCode").value = "";
+        document.getElementById("names").value = "";
+        document.getElementById("classe").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("day").value = "";
+        document.getElementById("moDun").value = "";
+
+        document.getElementById("btn-add").style.display = "inline-block";
+        document.getElementById("btn-save").style.display = "none";
+
+        let selectedRow = document.querySelector("tr.selected");
+        selectedRow.classList.remove("selected");
+    }
+
+    function updateStudent() {
+        let selectedRow = document.querySelector("tr.selected");
+
+        if (selectedRow) {
+            let index = selectedRow.getAttribute("data-index");
+            let student = studentArray[index];
+
+            document.getElementById("studentCode").value = student.studentCode;
+            document.getElementById("names").value = student.names;
+            document.getElementById("classe").value = student.classe;
+            document.getElementById("email").value = student.email;
+            document.getElementById("day").value = student.day;
+            document.getElementById("moDun").value = student.moDun;
+
+            document.getElementById("btn-add").style.display = "none";
+            document.getElementById("btn-save").style.display = "inline-block";
+        }
+    }
+
+    function deleteStudent() {
+        let selectedRow = document.querySelector("tr.selected");
+        if (selectedRow) {
+        let index = selectedRow.getAttribute("data-index");
+        studentArray.splice(index, 1);
+        displayStudent();
+
+        document.getElementById("studentCode").value = "";
+        document.getElementById("names").value = "";
+        document.getElementById("classe").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("day").value = "";
+        document.getElementById("moDun").value = "";
+
+        document.getElementById("btn-add").style.display = "inline-block";
+        document.getElementById("btn-save").style.display = "none";
+
+        selectedRow.classList.remove("selected");
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    displayStudent();
+});
+
+let table = document.querySelector("table");
+table.addEventListener("click", function(event) {
+    let selectedRow = event.target.parentNode;
+
+    if (selectedRow.tagName === "TR") {
+        if (selectedRow.classList.contains("selected")) {
+            selectedRow.classList.remove("selected");
+        } else {
+            let rows = table.getElementsByTagName("tr");
+
+            for (let i = 0; i < rows.length; i++) {
+                rows[i].classList.remove("selected");
+            }
+
+            selectedRow.classList.add("selected");
+        }
+    }
+});
+</script> 
+</body>
+</html>
