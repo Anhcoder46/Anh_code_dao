@@ -45,7 +45,7 @@ void setcursor(bool visible, DWORD size)
 	SetConsoleCursorInfo(console,&lpCursor);
 }
 
-void drawBorder(){ 
+void drawBorder() { 
 	
 	for(int i=0; i<SCREEN_WIDTH; i++){
 		gotoxy(i,0); cout<<"±";
