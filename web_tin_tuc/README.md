@@ -21,7 +21,7 @@ Free HTML Bootstrap Blogging Template by [Sal](https://www.wowthemes.net).
 
 Copyright (C) 2019 WowThemes.net.
 
-Designed and developed by [Sal](https://www.wowthemes.net), *free* under MIT license. 
+Designed and developed by [Anh](https://www.wowthemes.net), *free* under MIT license. 
 
 <a href="https://www.buymeacoffee.com/sal" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
 

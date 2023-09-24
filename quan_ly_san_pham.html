@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Quản lý sản phẩm</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+<h1>Quản lý sản phẩm</h1>
+
+<h2>Danh sách sản phẩm</h2>
+<table id="productTable">
+    <tr>
+        <th>Số thứ tự</th>
+        <th>Tên sản phẩm</th>
+        <th>Giá</th>
+        <th>Số lượng</th>
+        <th>Mô tả</th>
+        <th></th>
+    </tr>
+</table>
+
+<h2>Thêm sản phẩm mới</h2>
+<form id="addProductForm">
+    <input type="text" id="productName" placeholder="Tên sản phẩm">
+    <input type="text" id="productPrice" placeholder="Giá">
+    <input type="number" id="productQuantity" placeholder="Số lượng">
+    <input type="text" id="productDescription" placeholder="Mô tả">
+    <button type="button" onclick="addProduct()">Thêm</button>
+</form>
+
+<h2>Sửa thông tin sản phẩm</h2>
+<form id="editProductForm">
+    <input type="text" id="editProductName" placeholder="Tên sản phẩm">
+    <input type="text" id="editProductPrice" placeholder="Giá">
+    <input type="number" id="editProductQuantity" placeholder="Số lượng">
+    <input type="text" id="editProductDescription" placeholder="Mô tả">
+    <button type="button" onclick="editProduct()">Sửa</button>
+</form>
+
+<h2>Tìm kiếm sản phẩm</h2>
+<input type="text" id="searchInput" placeholder="Nhập tên sản phẩm">
+<button type="button" onclick="searchProduct()">Tìm kiếm</button>
+
+<h2>Xuất danh sách sản phẩm</h2>
+<button type="button" onclick="exportProducts()">Xuất CSV</button>
+
+<script>
+    // Bước 2: Tạo một mảng chứa danh sách sản phẩm
+    var products = [];
+
+    // Bước 3: Xây dựng các hàm
+    function displayProducts() {
+        var table = document.getElementById("productTable");
+        table.innerHTML = "<tr><th>Số thứ tự</th><th>Tên sản phẩm</th><th>Giá</th><th>Số lượng</th><th>Mô tả</th><th></th></tr>";
+
+        for (var i = 0; i < products.length; i++) {
+            var row = table.insertRow(i + 1);
+            var indexCell = row.insertCell(0);
+            var nameCell = row.insertCell(1);
+            var priceCell = row.insertCell(2);
+            var quantityCell = row.insertCell(3);
+            var descriptionCell = row.insertCell(4);
+            var deleteCell = row.insertCell(5);
+
+            indexCell.innerHTML = i + 1;
+            nameCell.innerHTML = products[i].name;
+            priceCell.innerHTML = products[i].price;
+            quantityCell.innerHTML = products[i].quantity;
+            descriptionCell.innerHTML = products[i].description;
+            deleteCell.innerHTML = "<button onclick='deleteProduct(" + i + ")'>Xoá</button>";
+        }
+    }
+
+    function addProduct() {
+        var productName = document.getElementById("productName").value;
+        var productPrice = document.getElementById("productPrice").value;
+        var productQuantity = document.getElementById("productQuantity").value;
+        var productDescription = document.getElementById("productDescription").value;
+
+        if (productName !== "") {
+            var newProduct = {
+                name: productName,
+                price: productPrice,
+                quantity: productQuantity,
+                description: productDescription
+            };
+
+            products.push(newProduct);
+            document.getElementById("productName").value = "";
+            document.getElementById("productPrice").value = "";
+            document.getElementById("productQuantity").value = "";
+            document.getElementById("productDescription").value = "";
+            displayProducts();
+            alert("Đã thêm sản phẩm mới: " + productName);
+        } else {
+            alert("Vui lòng nhập tên sản phẩm.");
+        }
+    }
+
+    function editProduct() {
+        var editProductName = document.getElementById("editProductName").value;
+        var editProductPrice = document.getElementById("editProductPrice").value;
+        var editProductQuantity = document.getElementById("editProductQuantity").value;
+        var editProductDescription = document.getElementById("editProductDescription").value;
+
+        if (editProductName !== "") {
+            var index = findProductIndex(editProductName);
+
+            if (index !== -1) {
+                products[index].name = editProductName;
+                products[index].price = editProductPrice;
+                products[index].quantity = editProductQuantity;
+                products[index].description = editProductDescription;
+                document.getElementById("editProductName").value = "";
+                document.getElementById("editProductPrice").value = "";
+                document.getElementById("editProductQuantity").value = "";
+                document.getElementById("editProductDescription").value = "";
+                displayProducts();
+                alert("Đã sửa thông tin sản phẩm: " + editProductName);
+            } else {
+                alert("Không tìm thấy sản phẩm: " + editProductName);
+            }
+        } else {
+            alert("Vui lòng nhập tên sản phẩm.");
+        }
+    }
+
+    function deleteProduct(index) {
+        var productName = products[index].name;
+        products.splice(index, 1);
+        displayProducts();
+        alert("Đã xoá sản phẩm: " + productName);
+    }
+
+    function searchProduct() {
+        var searchInput = document.getElementById("searchInput").value;
+        var searchResults = [];
+
+        for (var i = 0; i < products.length; i++) {
+            if (products[i].name.toLowerCase().includes(searchInput.toLowerCase())) {
+                searchResults.push(products[i]);
+            }
+        }
+
+        if (searchResults.length > 0) {
+            var table = document.getElementById("productTable");
+            table.innerHTML =
+                "<tr>" +
+                    "<th>Số thứ tự</th>" +
+                    "<th>Tên sản phẩm</th>" +
+                    "<th>Giá</th>" +
+                    "<th>Số lượng</th>" +
+                    "<th>Mô tả</th>" +
+                    "<th></th>" +
+                "</tr>";
+
+            for (var j = 0; j < searchResults.length; j++) {
+                var row = table.insertRow(j + 1);
+                var indexCell = row.insertCell(0);
+                var nameCell = row.insertCell(1);
+                var priceCell = row.insertCell(2);
+                var quantityCell = row.insertCell(3);
+                var descriptionCell = row.insertCell(4);
+                var deleteCell = row.insertCell(5);
+
+                indexCell.innerHTML = j + 1;
+                nameCell.innerHTML = searchResults[j].name;
+                priceCell.innerHTML = searchResults[j].price;
+                quantityCell.innerHTML = searchResults[j].quantity;
+                descriptionCell.innerHTML = searchResults[j].description;
+                deleteCell.innerHTML = "<button onclick='deleteProduct(" + findProductIndex(searchResults[j].name) + ")'>Xoá</button>";
+            }
+        } else {
+            alert("Không tìm thấy sản phẩm nào.");
+        }
+    }
+
+    function exportProducts() {
+        var csvContent = "data:text/csv;charset=utf-8,";
+        csvContent += "Tên sản phẩm,Giá,Số lượng,Mô tả\n";
+
+        for (var i = 0; i < products.length; i++) {
+            var productData = [];
+            productData.push(products[i].name);
+            productData.push(products[i].price);
+            productData.push(products[i].quantity);
+            productData.push(products[i].description);
+            csvContent += productData.join(",") + "\n";
+        }
+
+        var encodedUri = encodeURI(csvContent);
+        var link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", "danh_sach_san_pham.csv");
+        document.body.appendChild(link);
+        link.click();
+    }
+
+    // Bước 1: Gọi hàm hiển thị sản phẩm ban đầu khi trang được tải
+    displayProducts();
+
+    // Hàm tiện ích để tìm kiếm vị trí của sản phẩm trong mảng
+    function findProductIndex(productName) {
+        for (var i = 0; i < products.length; i++) {
+            if (products[i].name === productName) {
+                return i;
+            }
+        }
+        return -1;
+    }
+</script>
+</body>
+</html>
