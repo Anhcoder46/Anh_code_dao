@@ -28,7 +28,6 @@ sections.forEach(sec => {
     }
 });
 
-
 /*=====sticky navbar=====*/
 let header = document.querySelector('.header');
 header.classList.toggle('sticky', window.scrollY > 100);
@@ -74,3 +73,14 @@ ScrollReveal().reveal('.home-content, .heading', { origin: 'top'});
 ScrollReveal().reveal('.home-img img, .services-container, .portfolio-box, .testimonial-wrapper, .contact form', { origin: 'bottom'});
 ScrollReveal().reveal('.home-content h1, .about-img', { origin: 'left'});
 ScrollReveal().reveal('.home-content h3, .home-content p, .about-content', { origin: 'right'});
+
+// /* ===== Download CV on click =====*/
+// document.getElementById('downloadLink').addEventListener('click', function() {
+//     var zipUrl = 'https://example.com/path/to/file.zip';
+//     var link = document.createElement('a');
+//     link.href = zipUrl;
+//     link.download = 'downloaded_file.zip';
+//     document.body.appendChild(link);
+//     link.click();
+//     document.body.removeChild(link);
+// });
