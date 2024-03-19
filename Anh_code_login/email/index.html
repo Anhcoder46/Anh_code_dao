@@ -1,10 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            /* box-sizing: border-box; */
+        }
+        body {
+            display: grid;
+            place-items: center;
+            height: 100vh;
+            font-size: 14px;
+        }
+        .container {
+            width: 300px;
+            border: 1.5px solid slategrey;
+            border-radius: 20px;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        input {
+            display: block;
+            border-radius: 7px;
+            outline: none;
+            border: 2px solid #7e7e7e;
+            padding: 14px 10px;
+            width: 275px;
+        }
+        input::placeholder {
+            float: right;
+        }
+        label {
+            position: absolute;
+            left: 16px;
+            top: -6px;
+            padding: 0 3px;
+            background-color: #fff;
+        }
+        input:focus label {
+            transform: translateY(0);
+        }
+        .box {
+            margin: 16px 0;
+            position: relative;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            border-radius: 7px;
+            border: none;
+            background-color: #7e7e7e;
+            padding: 16px;
+            color: #fff;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #464545;
+        }
+    </style>
 </head>
 <body>
-$END$
+<div class="container">
+    <form action="" class="login">
+        <h1>Form Styling</h1>
+        <div class="box">
+            <label for="email">Enter your email address</label>
+            <input type="text" placeholder="@gmail.com">
+        </div>
+        <div class="box">
+            <label for="password">Enter password</label>
+            <input type="password" placeholder="8 characters min">
+        </div>
+        <button type="submit" class="btn">Login</button>
+    </form>
+</div>
 </body>
 </html>
