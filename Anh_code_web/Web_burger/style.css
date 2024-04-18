@@ -52,15 +52,15 @@ nav .input i{
     color: orange;
     cursor: pointer;
 }
-.mainPage{
+.mainPage {
     display: flex;
     justify-content: space-around;
     margin-top: 32px;
 }
-.mainPage img{
+.mainPage img {
     width: 35%;
 }
-.mainPage .text{
+.mainPage .text {
     width: 500px;
     margin-top:42px;
 }
@@ -234,11 +234,6 @@ nav .input i{
     cursor: pointer;
 }
 
-
-
-
-
-
 .footer{
     display: flex;
     justify-content: center;
@@ -256,12 +251,6 @@ nav .input i{
     margin-top: 11px;
 
 }
-
-
-
-
-
-
 
 /* log in CSS */
 

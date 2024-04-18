@@ -5,11 +5,79 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5f144d68-478f-46bd-a89d-b86f997f88e7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/script.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Project_cua_toi/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Project_cua_toi/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Project_cua_toi/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Project_cua_toi/script.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Anh_code_login/NameEmail/Demo.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Web_ban_sua/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/.idea/Web_ban_sua.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/css/bootstrap.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/css/jquery.fancybox.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/css/swiper-bundle.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/images/about.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/images/berry.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/images/blog-pattern-bg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/images/blog/blog1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/images/blog/blog2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/images/blog/blog3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/images/brands/b1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/images/brands/b2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/images/brands/b3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/images/brands/b4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/images/brands/b5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/images/bt1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/images/bt2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/images/bt3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/images/bt4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/images/chef/c1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/images/chef/c2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/images/chef/c3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/images/chef/c4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/images/chef/c5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/images/dish/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/images/dish/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/images/dish/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/images/dish/4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/images/dish/5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/images/dish/6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/images/faq-bg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/images/leaf.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/images/loader.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/images/main-b.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/images/mashroom.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/images/menu-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/images/menu-2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/images/menu-3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/images/menu-4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/images/menu-bg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/images/news.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/images/pizza.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/images/sushi.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/images/table-leaves-shape.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/images/testimonial-img.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/images/testimonials/t1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/images/testimonials/t2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/images/testimonials/t3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/images/testimonials/t4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/images/title-shape.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/images/video.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/js/ScrollToPlugin.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/js/ScrollTrigger.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/js/bootstrap.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/js/font-awesome.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/js/gsap.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/js/jquery-3.5.1.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/js/jquery.fancybox.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/js/jquery.mixitup.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/js/parallax.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/js/popper.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/js/smooth-scroll.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/assets/js/swiper-bundle.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web_ban_sua/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +114,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/Anh_code_dao/Anh_code_web/web_bau_cua",
+    "last_opened_file_path": "D:/Anh_code_dao/Anh_code_web/web_ban_pizza",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -73,6 +141,8 @@
       <workItem from="1703770488547" duration="2102000" />
       <workItem from="1705944304640" duration="535000" />
       <workItem from="1706065240014" duration="912000" />
+      <workItem from="1711552053090" duration="1251000" />
+      <workItem from="1711553833823" duration="1540000" />
     </task>
     <servers />
   </component>
