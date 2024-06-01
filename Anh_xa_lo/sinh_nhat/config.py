@@ -1,4 +1,4 @@
-# Specify which file (without .py extension) in the arts folder should be used
+Python was not found; run without arguments to install from the Microsoft Store, or disable this shortcut from Settings > Manage App Execution Aliases.# Specify which file (without .py extension) in the arts folder should be used
 artFile = "example"
 # Speed of art
 speed = 0.005
