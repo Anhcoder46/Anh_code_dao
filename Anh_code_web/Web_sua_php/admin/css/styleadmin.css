@@ -1,0 +1,42 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	color: black;
+}
+a{
+	/*xoa gach chan*/
+	text-decoration: none; 
+}
+ul{
+	list-style: none;
+}
+header{
+	height: 100px;
+	width: 100vw;
+	border-bottom: 2px solid black;
+	text-align: center;
+}
+.content{
+	padding-top: 30px;
+	display: flex;
+}
+.content-left{
+	background-color: grey;
+	width: 20%;
+	height: 100vh;
+	padding: 20px 0 0 12px;
+}
+.content-left > ul > li > a{
+	font-weight: bold;
+	background-color: red;
+	font-size: 20px;
+}
+
+.content-left ul li{
+	margin: 6px o;
+}
+.content-left ul ul{
+	margin-left:20px;
+}
+/*sửa ảnh admin*/
