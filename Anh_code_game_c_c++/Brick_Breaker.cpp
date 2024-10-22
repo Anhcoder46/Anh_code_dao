@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <conio.h>
 #include <windows.h>
@@ -25,7 +24,7 @@ int visibleBricks[24] = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
 int sliderPos[2] = { 18, 22 };
 int ballPos[2] = { 17, 26 };
 int startBall = 0;
-int dir = 1; // 1-TopRight, 2-TopLeft, 3-BottomLeft, 4-BottomRight
+int dir = 4; // 1-TopRight, 2-TopLeft, 3-BottomLeft, 4-BottomRight
 int bricksLeft = 24;
 int win = 0;
 int lose = 0;
@@ -67,23 +66,29 @@ void drawBricks() {
 }
 
 void ballHitSlider() {
-    if (ballPos[0] >= sliderPos[0] && ballPos[0] <= sliderPos[0] + 8) {
-        if (ballPos[1] == sliderPos[1] - 1) {
-            if (dir == 3)
-                dir = 2;
-            else if (dir == 4)
-                dir = 1;
-        }
+    if (ballPos[0] == sliderPos[0] - 1 && ballPos[1] >= sliderPos[1] && ballPos[1] <= sliderPos[1] + 9) {
+        if (dir == 3)
+            dir = 2;
+        else if (dir == 4)
+            dir = 1;
     }
 }
 
 void ballHitBricks() {
     for (int i = 0; i < 24; i++) {
         if (visibleBricks[i] == 1) {
-            if (ballPos[0] >= bricks[i][0] && ballPos[0] <= bricks[i][0] + 2) {
-                if (ballPos[1] >= bricks[i][1] && ballPos[1] <= bricks[i][1] + 4) {
+            if (ballPos[0] >= bricks[i][0] && ballPos[0] <= bricks[i][0] + 1) {
+                if (ballPos[1] >= bricks[i][1] && ballPos[1] <= bricks[i][1] + 3) {
                     visibleBricks[i] = 0;
                     bricksLeft--;
+                    if (dir == 1)
+                        dir = 3;
+                    else if (dir == 2)
+                        dir = 4;
+                    else if (dir == 3)
+                        dir = 1;
+                    else if (dir == 4)
+                        dir = 2;
                 }
             }
         }
@@ -105,91 +110,90 @@ void play() {
         if (_kbhit()) {
             char ch = _getch();
             if (ch == 'd' || ch == 'D' || ch == 77) {
-                if (sliderPos[1] < 44)
+                if (sliderPos[1] < 42)
                     sliderPos[1] = sliderPos[1] + 2;
             }
-            if (ch =='A' || ch == 75) {
-if (sliderPos[1] > 2)
-sliderPos[1] = sliderPos[1] - 2;
-}
-if (ch == 32) {
-startBall = 1;
-}
-if (ch == 27) {
-break;
-}
-}
-if (startBall == 1) {
-        if (dir == 1) { // TOPRIGHT
-            ballPos[0] = ballPos[0] - 1;
-            ballPos[1] = ballPos[1] + 1;
+            if (ch == 'a' || ch == 'A' || ch == 75) {
+                if (sliderPos[1] > 2)
+                    sliderPos[1] = sliderPos[1] - 2;
+            }
+            if (ch == 32) {
+                startBall = 1;
+            }
+            if (ch == 27) {
+                break;
+            }
         }
-        else if (dir == 2) { // TOPLEFT
-            ballPos[0] = ballPos[0] - 1;
-            ballPos[1] = ballPos[1] - 1;
-        }
-        else if (dir == 3) { // BOTTOMLEFT
-            ballPos[0] = ballPos[0] + 1;
-            ballPos[1] = ballPos[1] - 1;
-        }
-        else if (dir == 4) { // BOTTOMRIGHT
-            ballPos[0] = ballPos[0] + 1;
-            ballPos[1] = ballPos[1] + 1;
-        }
+        if (startBall == 1) {
+            if (dir == 1) { // TOPRIGHT
+                ballPos[0] = ballPos[0] - 1;
+                ballPos[1] = ballPos[1] + 1;
+            } else if (dir == 2) { // TOPLEFT
+                ballPos[0] = ballPos[0] - 1;
+                ballPos[1] = ballPos[1] - 1;
+            } else if (dir == 3) { // BOTTOMLEFT
+                ballPos[0] = ballPos[0] + 1;
+                ballPos[1] = ballPos[1] - 1;
+            } else if (dir == 4) { // BOTTOMRIGHT
+                ballPos[0] = ballPos[0] + 1;
+                ballPos[1] = ballPos[1] + 1;
+            }
 
-        ballHitSlider();
-        ballHitBricks();
+            ballHitSlider();
+            ballHitBricks();
 
-        if (ballPos[0] > MAXX || ballPos[0] < MINX) {
-            if (dir == 1)
-                dir = 2;
-            else if (dir == 4)
-                dir = 3;
-        }
+            if (ballPos[0] <= MINX) {
+                if (dir == 2) dir = 4;
+                else if (dir == 1) dir = 3;
+            }
+            if (ballPos[1] <= MINY) {
+                if (dir == 2) dir = 1;
+                else if (dir == 3) dir = 4;
+            }
+            if (ballPos[0] >= MAXX) {
+                if (dir == 4) dir = 2;
+                else if (dir == 3) dir = 1;
+            }
+            if (ballPos[1] >= MAXY) {
+                if (dir == 4) dir = 3;
+                else if (dir == 1) dir = 2;
+            }
 
-        if (ballPos[1] > MAXY || ballPos[1] < MINY) {
-            if (dir == 2)
-                dir = 3;
-            else if (dir == 1)
-                dir = 4;
-        }
+            if (bricksLeft == 0) {
+                win = 1;
+                break;
+            }
 
-        if (bricksLeft == 0) {
-            win = 1;
-            break;
+            if (ballPos[0] == sliderPos[0] + 1 && ballPos[1] == sliderPos[1] - 1) {
+                if (dir == 2)
+                    dir = 1;
+            }
         }
-
-        if (ballPos[0] == sliderPos[0] + 1 && ballPos[1] == sliderPos[1] - 1) {
-            if (dir == 2)
-                dir = 1;
-        }
+        Sleep(100);
     }
 
-    Sleep(10);
-}
+    system("cls");
+    drawBricks();
+    drawBorder();
 
-system("cls");
-drawBricks();
-drawBorder();
+    gotoxy(sliderPos[1], sliderPos[0]);
+    cout << "++++++++++";
 
-gotoxy(sliderPos[1], sliderPos[0]);
-cout << "++++++++++";
+    gotoxy(ballPos[1], ballPos[0]);
+    cout << "0";
 
-gotoxy(ballPos[1], ballPos[0]);
-cout << "0";
+    gotoxy(20, 10);
 
-gotoxy(20, 10);
-
-if (win == 1)
-    cout << "YOU WON!";
-else
-    cout << "YOU LOST!";
-
-_getch();
+    if (win == 1) {
+        cout << "YOU WON!";
+    } else {
+        cout << "YOU LOST!";
+    }
+    _getch();
 }
 
 int main() {
-setcursor(0, 0);
-play();
-return 0;
+    setcursor(0, 0);
+    play();
+    return 0;
 }

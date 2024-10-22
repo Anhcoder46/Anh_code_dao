@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig authType="PASSWORD" connectionConfig="{&quot;serverAliveInterval&quot;:300}" id="2afe7d3c-c77b-4a5e-ab2f-7a0f611ea410" port="22" customName="nodejs_sever" nameFormat="CUSTOM" useOpenSSHConfig="true">
+        <option name="customName" value="nodejs_sever" />
+      </sshConfig>
+    </configs>
+  </component>
+</project>
