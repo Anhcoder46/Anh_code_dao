@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Giao Diện Trường Học</title>
+</head>
+<body>
+<header>
+    <h1>Trường Đại Học Kiến Trúc Đà Nẵng</h1>
+    <input type="text" placeholder="Tìm kiếm...">
+</header>
+
+<section class="student-info">
+    <div class="student-photo">
+        <img src="student.jpg" alt="Hình sinh viên">
+    </div>
+    <div class="info">
+        <p>MSSV: 2251220096</p>
+        <p>Họ tên: Trần Đức Anh</p>
+        <p>Lớp: 22CT2</p>
+        <p>Khóa: DHCQ_K2022</p>
+        <p>Ngày sinh: 16/05/2004</p>
+        <p>Nơi sinh: Hà Tĩnh</p>
+        <button>Xem chi tiết</button>
+    </div>
+</section>
+
+<section class="notifications">
+    <h2>Thông báo</h2>
+    <p>Nhắc nhở mới, chưa xem: 5</p>
+    <button>Xem chi tiết</button>
+</section>
+
+<section class="dashboard">
+    <div class="dashboard-item">
+        <h3>Kết quả học tập</h3>
+        <canvas id="gradeChart"></canvas>
+    </div>
+    <div class="dashboard-item">
+        <h3>Tiến độ học tập</h3>
+        <div class="progress-circle">
+            <p>104/167</p>
+        </div>
+    </div>
+    <div class="dashboard-item">
+        <h3>Lớp học phần</h3>
+        <ul>
+            <li>PRT40101: Thực tập nghề nghiệp - 2 tín chỉ</li>
+            <li>EIT30202: Tiếng Anh chuyên ngành - 2 tín chỉ</li>
+            <li>PRW20103: Lập trình trong Windows - 3 tín chỉ</li>
+            <li>ISD20024: Đồ án phân tích - 3 tín chỉ</li>
+        </ul>
+    </div>
+</section>
+
+<footer>
+    <p>Copyright © 2020 Trường Đại Học Kiến Trúc Đà Nẵng</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
